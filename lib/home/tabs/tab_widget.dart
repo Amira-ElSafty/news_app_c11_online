@@ -5,7 +5,6 @@ import 'package:flutter_app_news_c11_online/model/SourceResponse.dart';
 
 class TabWidget extends StatefulWidget {
   List<Source> sourcesList;
-
   TabWidget({required this.sourcesList});
 
   @override
