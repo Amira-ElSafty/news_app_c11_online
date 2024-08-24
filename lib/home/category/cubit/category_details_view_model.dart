@@ -1,5 +1,6 @@
 import 'package:flutter_app_news_c11_online/api/api_manager.dart';
 import 'package:flutter_app_news_c11_online/home/category/cubit/sources_states.dart';
+import 'package:flutter_app_news_c11_online/repository/sources/dataSource/source_local_data_source_impl.dart';
 import 'package:flutter_app_news_c11_online/repository/sources/dataSource/source_remote_data_source_impl.dart';
 import 'package:flutter_app_news_c11_online/repository/sources/repository/source_repository_impl.dart';
 import 'package:flutter_app_news_c11_online/repository/sources/source_data_source.dart';
@@ -10,11 +11,14 @@ class CategoryDetailsViewModel extends Cubit<SourceStates>{
   late SourceRepositoryContract repositoryContract ;
   late SourceRemoteDataSource remoteDataSource ;
   late ApiManager apiManager ;
+  late SourceLocalDataSource localDataSource ;
   CategoryDetailsViewModel(): super(SourceLoadingState()){
     apiManager = ApiManager();
     remoteDataSource = SourceRemoteDataSourceImpl(apiManager: apiManager);
+    localDataSource = SourceLocalDataSourceImpl();
     repositoryContract = SourceRepositoryImpl(
-        remoteDataSource: remoteDataSource);
+        remoteDataSource: remoteDataSource,
+    localDataSource: localDataSource);
   }
   // todo: hold data - handle logic
   void getSources(String categoryId)async{

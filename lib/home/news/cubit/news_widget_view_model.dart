@@ -17,6 +17,7 @@ class NewsWidgetViewModel extends Cubit<NewsStates>{
   }
   //todo: hold data - handle logic
   void getNewsBySourceId(String sourceId)async {
+
     try {
       emit(MessageState());
       emit(NewsLoadingState());
