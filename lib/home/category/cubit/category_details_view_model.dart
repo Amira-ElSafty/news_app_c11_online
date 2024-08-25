@@ -6,20 +6,12 @@ import 'package:flutter_app_news_c11_online/repository/sources/repository/source
 import 'package:flutter_app_news_c11_online/repository/sources/source_data_source.dart';
 import 'package:flutter_app_news_c11_online/repository/sources/source_repository_contract.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:injectable/injectable.dart';
 
+@injectable
 class CategoryDetailsViewModel extends Cubit<SourceStates>{
-  late SourceRepositoryContract repositoryContract ;
-  late SourceRemoteDataSource remoteDataSource ;
-  late ApiManager apiManager ;
-  late SourceLocalDataSource localDataSource ;
-  CategoryDetailsViewModel(): super(SourceLoadingState()){
-    apiManager = ApiManager();
-    remoteDataSource = SourceRemoteDataSourceImpl(apiManager: apiManager);
-    localDataSource = SourceLocalDataSourceImpl();
-    repositoryContract = SourceRepositoryImpl(
-        remoteDataSource: remoteDataSource,
-    localDataSource: localDataSource);
-  }
+   SourceRepositoryContract repositoryContract ;
+  CategoryDetailsViewModel({required this.repositoryContract}): super(SourceLoadingState());
   // todo: hold data - handle logic
   void getSources(String categoryId)async{
     try{

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_news_c11_online/di/di.dart';
 import 'package:flutter_app_news_c11_online/home/home_screen.dart';
 import 'package:flutter_app_news_c11_online/my_bloc_observer.dart';
 import 'package:flutter_app_news_c11_online/my_theme_data.dart';
@@ -10,6 +11,7 @@ void main()async{
   WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = MyBlocObserver();
   final documentDirectory = await getApplicationDocumentsDirectory();
+  configureDependencies();
   Hive.init(documentDirectory.path);
   runApp(MyApp());
 }

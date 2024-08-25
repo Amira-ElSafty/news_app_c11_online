@@ -5,16 +5,12 @@ import 'package:flutter_app_news_c11_online/repository/news/news_data_source.dar
 import 'package:flutter_app_news_c11_online/repository/news/news_repository.dart';
 import 'package:flutter_app_news_c11_online/repository/news/repository/news_repository_impl.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:injectable/injectable.dart';
 
+@injectable
 class NewsWidgetViewModel extends Cubit<NewsStates>{
-  late NewsRepository newsRepository ;
-  late NewsRemoteDataSource remoteDataSource ;
-  late ApiManager apiManager ;
-  NewsWidgetViewModel():super(NewsLoadingState()){
-    apiManager = ApiManager();
-    remoteDataSource = NewsRemoteDataSourceImpl(apiManager: apiManager);
-    newsRepository = NewsRepositoryImpl(remoteDataSource: remoteDataSource);
-  }
+   NewsRepository newsRepository ;
+  NewsWidgetViewModel({required this.newsRepository}):super(NewsLoadingState());
   //todo: hold data - handle logic
   void getNewsBySourceId(String sourceId)async {
 

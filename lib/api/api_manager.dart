@@ -3,8 +3,18 @@ import 'package:flutter_app_news_c11_online/model/NewsResponse.dart';
 import 'package:flutter_app_news_c11_online/model/SourceResponse.dart';
 import 'package:flutter_app_news_c11_online/api/api_constants.dart';
 import 'package:http/http.dart' as http;
+import 'package:injectable/injectable.dart';
 
+@singleton
 class ApiManager {
+  //   ApiManager._(); /// private constructor
+  // static ApiManager? _instance ;  // null - object
+  //
+  // static ApiManager getInstance(){
+  //   _instance ??= ApiManager._();
+  //   return _instance! ;
+  // }
+
 /*
 https://newsapi.org/v2/top-headlines/sources?apiKey=500c5a4f9b244f3db92a47f436f1819e
  */
